@@ -53,6 +53,11 @@
 		  <th scope="col">nombre</th>
 		  <th scope="col">codigo</th>
 		  <th scope="col">valor</th>
+		  <?php
+				if($filter){
+					$sql = mysqli_query($con, "SELECT * FROM producto ORDER BY id ASC");
+				}
+			?>	
 		</tr>
 		
 		
@@ -72,11 +77,11 @@
 			'codigo': $( "input[name='codigo']" ).val(),
 			'valor': $( "input[name='valor']" ).val()
           }
-          $.post( "services/createUser.php", body, function(a, b, c){
+          $.post( "services/list.php", body, function(a, b, c){
             debugger;
             swal(
               'Good job!',
-              'You have created the user!',
+              'You have created the product!',
               'success'
             )
           }).fail(function(resp, error, responseType){
